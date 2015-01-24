@@ -7,3 +7,5 @@ sites/*/private
 
 .DS_Store
 .idea/
+
+profiles/drupalfi/themes/drupalfi/.sass-cache/*
