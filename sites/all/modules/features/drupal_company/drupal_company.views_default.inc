@@ -51,12 +51,13 @@ function drupal_company_views_default_views() {
   $handler->display->display_options['fields']['fieldset']['children'] = array(
     0 => 'title',
     1 => 'field_address',
-    2 => 'field_website_url',
-    3 => 'nothing',
-    4 => 'field_contact_person_title',
-    5 => 'field_contact_person_name',
-    6 => 'field_contact_person_email',
-    7 => 'field_contact_phone_number',
+    2 => 'field_company_description',
+    3 => 'field_website_url',
+    4 => 'nothing',
+    5 => 'field_contact_person_title',
+    6 => 'field_contact_person_name',
+    7 => 'field_contact_person_email',
+    8 => 'field_contact_phone_number',
   );
   $handler->display->display_options['fields']['fieldset']['fieldset']['type'] = 'div';
   /* Kenttä: Sisältö: Otsikko */
@@ -81,6 +82,12 @@ function drupal_company_views_default_views() {
       'address' => 'address',
     ),
   );
+  /* Kenttä: Sisältö: Company description */
+  $handler->display->display_options['fields']['field_company_description']['id'] = 'field_company_description';
+  $handler->display->display_options['fields']['field_company_description']['table'] = 'field_data_field_company_description';
+  $handler->display->display_options['fields']['field_company_description']['field'] = 'field_company_description';
+  $handler->display->display_options['fields']['field_company_description']['label'] = '';
+  $handler->display->display_options['fields']['field_company_description']['element_label_colon'] = FALSE;
   /* Kenttä: Sisältö: Website URL */
   $handler->display->display_options['fields']['field_website_url']['id'] = 'field_website_url';
   $handler->display->display_options['fields']['field_website_url']['table'] = 'field_data_field_website_url';

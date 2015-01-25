@@ -95,6 +95,14 @@ function event_views_default_views() {
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['empty'] = FALSE;
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area']['content'] = 'Ei tulevia tapahtumia! ';
+  $handler->display->display_options['empty']['area']['format'] = 'wysiwyg_profile';
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Kenttä: Event date hidden */
   $handler->display->display_options['fields']['field_event_date_1']['id'] = 'field_event_date_1';
@@ -180,6 +188,7 @@ function event_views_default_views() {
     t('Block'),
     t('more'),
     t('Sivu'),
+    t('Ei tulevia tapahtumia! '),
     t('[title] [field_event_date_1]'),
     t('<p><strong>Aika:</strong> [field_event_date]</p>'),
     t('<p><strong>Paikka: </strong>[field_event_address-thoroughfare], [field_event_address-premise], [field_event_address-postal_code] [field_event_address-locality], [field_event_address-country]</p>'),

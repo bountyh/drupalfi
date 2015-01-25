@@ -314,8 +314,13 @@ a#collapsed-menu-button
   text-align: center
   display: block
   margin: 1em auto
-  background: white url(../images/menu-icon.png) no-repeat 50px 16px
+  background: url(../images/menu-icon.png) no-repeat 50px 16px
   padding-left: 30px
+  @include media($tablet)
+    text-indent: 9999px
+    background-position: top right
+    border: none
+    width: auto
 
 #mobile-menu-inner
   width: 100%

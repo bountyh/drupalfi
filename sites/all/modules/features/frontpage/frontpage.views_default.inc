@@ -105,6 +105,14 @@ function frontpage_views_default_views() {
   $handler->display->display_options['pager']['options']['items_per_page'] = '1';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Kenttä: Global: Custom text */
+  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['label'] = '';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<h4>Tapahtumat</h4>
+<span class="stripe"></span>';
+  $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   /* Kenttä: Sisältö: Date */
   $handler->display->display_options['fields']['field_event_date']['id'] = 'field_event_date';
   $handler->display->display_options['fields']['field_event_date']['table'] = 'field_data_field_event_date';
@@ -124,14 +132,13 @@ function frontpage_views_default_views() {
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['title']['alter']['text'] = '[title] <br /><br />
- <a href="/tapahtumat">Katso Kaikki</a>';
+  $handler->display->display_options['fields']['title']['alter']['text'] = '[title]
+ <a class="view-all" href="/tapahtumat">Katso Kaikki</a>';
   $handler->display->display_options['fields']['title']['element_type'] = 'h2';
   $handler->display->display_options['fields']['title']['element_class'] = 'title';
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title']['element_wrapper_type'] = '0';
   $handler->display->display_options['fields']['title']['element_default_classes'] = FALSE;
-  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
   $handler->display->display_options['defaults']['sorts'] = FALSE;
   /* Sort criterion: Sisältö: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
@@ -160,6 +167,14 @@ function frontpage_views_default_views() {
   $handler->display->display_options['pager']['options']['items_per_page'] = '1';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Kenttä: Global: Custom text */
+  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['label'] = '';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<h4>Uutiset</h4>
+<span class="stripe"></span>';
+  $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   /* Kenttä: Sisältö: Post date */
   $handler->display->display_options['fields']['created']['id'] = 'created';
   $handler->display->display_options['fields']['created']['table'] = 'node';
@@ -174,14 +189,13 @@ function frontpage_views_default_views() {
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['title']['alter']['text'] = '[title] <br /> <br />
- <a href="/uutiset">Katso Kaikki</a>';
+  $handler->display->display_options['fields']['title']['alter']['text'] = '[title]
+ <a class="view-all" href="/uutiset">Katso Kaikki</a>';
   $handler->display->display_options['fields']['title']['element_type'] = 'h2';
   $handler->display->display_options['fields']['title']['element_class'] = 'title';
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title']['element_wrapper_type'] = '0';
   $handler->display->display_options['fields']['title']['element_default_classes'] = FALSE;
-  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
   $handler->display->display_options['defaults']['sorts'] = FALSE;
   /* Sort criterion: Sisältö: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
@@ -214,11 +228,15 @@ function frontpage_views_default_views() {
     t('Page'),
     t('Top bg'),
     t('Tapahtumat'),
-    t('[title] <br /><br />
- <a href="/tapahtumat">Katso Kaikki</a>'),
+    t('<h4>Tapahtumat</h4>
+<span class="stripe"></span>'),
+    t('[title]
+ <a class="view-all" href="/tapahtumat">Katso Kaikki</a>'),
     t('Uutiset'),
-    t('[title] <br /> <br />
- <a href="/uutiset">Katso Kaikki</a>'),
+    t('<h4>Uutiset</h4>
+<span class="stripe"></span>'),
+    t('[title]
+ <a class="view-all" href="/uutiset">Katso Kaikki</a>'),
   );
   $export['frontpage_view'] = $view;
 
