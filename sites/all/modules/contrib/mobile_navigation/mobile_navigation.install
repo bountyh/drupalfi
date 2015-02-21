@@ -18,6 +18,4 @@ function mobile_navigation_uninstall() {
   variable_del('mobile_navigation_special_classes');
   variable_del('mobile_navigation_mainPageSelector');
   variable_del('mobile_navigation_useMask');
-  variable_del('mobile_navigation_menu_label');
-  variable_del('mobile_navigation_expand_active_trail');
 }

@@ -21,9 +21,7 @@
           menuWidth        : Drupal.settings.mobile_navigation.menuWidth,
           specialClasses   : Drupal.settings.mobile_navigation.specialClasses,
           mainPageSelector : Drupal.settings.mobile_navigation.mainPageSelector,
-          useMask          : Drupal.settings.mobile_navigation.useMask,
-          menuLabel        : Drupal.settings.mobile_navigation.menuLabel,
-          expandActive : Drupal.settings.mobile_navigation.expandActive
+          useMask          : Drupal.settings.mobile_navigation.useMask
         };
         $(Drupal.settings.mobile_navigation.menuSelector, context).mobile_menu(settings);
       }

@@ -43,13 +43,6 @@ function mobile_navigation_configuration_form($form, &$form_state) {
     '#description' => t('The main container for the page. On Bartik is "#page".'),
   );
 
-  $form['mobile_navigation_menu_label'] = array(
-    '#title' => t('Mobile menu label.'),
-    '#type' => 'textfield',
-    '#default_value' => variable_get('mobile_navigation_menu_label', MOBILE_NAVIGATION_MENU_LABEL),
-    '#description' => t('The label used on the mobile menu.'),
-  );
-
   $form['mobile_navigation_behavior'] = array(
     '#title' => 'Mobile Navigation behavior',
     '#collapsible' => TRUE,
@@ -114,13 +107,6 @@ function mobile_navigation_configuration_form($form, &$form_state) {
     '#type' => 'checkbox',
     '#description' => t('Special Classes are added to Menu Items according to their position and level. (Like for instance: Item-1, Item-2-1, Item-3-1-1, etc.)'),
     '#default_value' => variable_get('mobile_navigation_special_classes', MOBILE_NAVIGATION_SPECIAL_CLASSES),
-  );
-
-  $form['mobile_navigation_behavior']['mobile_navigation_expand_active_trail'] = array(
-    '#title' => t('Expand active trail automatically (only for accordion plugin)'),
-    '#type' => 'checkbox',
-    '#description' => t('Expands active trail accordion automatically'),
-    '#default_value' => variable_get('mobile_navigation_expand_active_trail', MOBILE_NAVIGATION_EXPAND_ACTIVE_TRAIL),
   );
 
   return system_settings_form($form);

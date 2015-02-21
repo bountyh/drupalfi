@@ -6,6 +6,7 @@
  * Licenses: GPLv2
  */
 
+
 /*! matchMedia() polyfill - Test a CSS media type/query in JS. Authors & copyright (c) 2012: Scott Jehl, Paul Irish, Nicholas Zakas, David Knight. Dual MIT/BSD license */
 
 window.matchMedia || (window.matchMedia = function() {
@@ -89,9 +90,7 @@ window.matchMedia || (window.matchMedia = function() {
 
     specialClasses : true,
 
-    useMask : true,
-    
-    menuLabel : "Menu"
+    useMask : true
   };
 
   $(document).ready(function() {
@@ -103,7 +102,7 @@ window.matchMedia || (window.matchMedia = function() {
     });
   });
 
-  // Main Class
+  /** Main Class **/
   var mobile_menu = function(elem, options) {
     var settings, current = "", width, height;
 
@@ -150,14 +149,14 @@ window.matchMedia || (window.matchMedia = function() {
 
         }
 
-        // Cloning
+        /*--- Cloning ---*/
         $('#mobile-menu-inner').append("<ul id='mobile-menu' class='" + classes + "'>" + $(_this.target).html() + "</ul>");
-        // Clearing up other plugins classes
+        /*---- Clearing up other plugins classes ----*/
         $('#mobile-menu li, #mobile-menu ul, #mobile-menu a').attr({
           id : "",
           style : ""
         }).removeClass('active');
-        // Adding item-with-ul to submenu items
+        /*------ Adding item-with-ul to submenu items ------*/
         $("#mobile-menu li").each(function() {
           if ($(this).find("ul").length) {
             $(this).addClass("item-with-ul");
@@ -199,7 +198,7 @@ window.matchMedia || (window.matchMedia = function() {
 
           }
           if (show) {
-            $("#mobile-menu-inner").prepend("<a id='menu-attached-button' class='mobile-menu-button " + dir_class + "'>" + _this.settings.menuLabel + "</a>");
+            $("#mobile-menu-inner").prepend("<a id='menu-attached-button' class='mobile-menu-button " + dir_class + "'>Menu</a>");
             $("#menu-attached-button").click(function(e) {
               _this.menuToggle(this);
               e.stopPropagation();
@@ -210,7 +209,7 @@ window.matchMedia || (window.matchMedia = function() {
 
         $('#mobile-menu-inner').hide();
 
-        // Add special classes to menu.
+        /*------ Add special classes to menu. ------*/
         if (_this.settings.specialClasses) {
           function addClassesToUl(ul, parentClass) {
 
@@ -247,38 +246,24 @@ window.matchMedia || (window.matchMedia = function() {
       collapseInAButton : function() {
 
         if (!$("#collapsed-menu-button").length) {
-          // Create button
+          /*--- Create button ---*/
           if (_this.settings.showEffect == "expand_down") {
-            $("#mobile-menu-wrapper").before("<a id='collapsed-menu-button' class='mobile-menu-button'>" + _this.settings.menuLabel + "</a>");
+            $("#mobile-menu-wrapper").before("<a id='collapsed-menu-button' class='mobile-menu-button'>Men&uacute;</a>");
           } else {
-            $(_this.target).before("<a id='collapsed-menu-button' class='mobile-menu-button'>" + _this.settings.menuLabel + "</a>");
+            $(_this.target).before("<a id='collapsed-menu-button' class='mobile-menu-button'>Men&uacute;</a>");
           }
 
           $("#mobile-menu-inner").hide();
-/*
+
           $("#collapsed-menu-button").unbind("click").click(function(e) {
             _this.menuToggle(this);
             e.stopPropagation();
             e.preventDefault();
           });
-  */        
-          if ('ontouchstart' in document.documentElement) {
-            $('#collapsed-menu-button').on('touchstart', function(e) {
-              _this.menuToggle(this);
-              e.stopPropagation();
-              e.preventDefault();
-            });
-          } else {
-            $("#collapsed-menu-button").unbind('click').click(function(e) {
-              _this.menuToggle(this);
-              e.stopPropagation();
-              e.preventDefault();
-            });
-          }
         }
       },
 
-      // Build Slide Menu plugin
+      /* Build Slide Menu plugin */
       slideMenuBuild : function() {
 
         if (!$("#mobile-menu").length) {
@@ -362,13 +347,7 @@ window.matchMedia || (window.matchMedia = function() {
             width : _this.settings.menuWidth + "%"
           });
           $("#mobile-menu").width(_this.width);
-          // _this.settings.showItems possible values: all, active_trail
-          if (_this.settings.expandActive) {
-            $("#mobile-menu .item-with-ul:not(.active-trail) ul").hide();
-            $("#mobile-menu .item-with-ul.active-trail").addClass("active");
-          } else {
-            $("#mobile-menu .item-with-ul ul").hide();
-          }
+          $("#mobile-menu .item-with-ul ul").hide();
 
           $("#mobile-menu .item-with-ul").unbind('click').click(function(e) {
             if (_this.settings.showItems == "active_trail") {
@@ -409,8 +388,8 @@ window.matchMedia || (window.matchMedia = function() {
 
       menuToggle : function(button) {
         if ($(button).hasClass("active")) {/* If it's openned */
-          if (_this.settings.menuPlugin == "accordion" && _this.settings.showItems == "active_trail") {
-            $("#mobile-menu .item-with-ul:not(.active-trail) ul").slideUp().parent("li").removeClass("active");
+          if (_this.settings.menuPlugin == "accordion") {
+            $("#mobile-menu .item-with-ul ul").slideUp().parent("li").removeClass("active");
           }
 
           if (_this.settings.useMask) {
@@ -419,7 +398,7 @@ window.matchMedia || (window.matchMedia = function() {
 
           switch (_this.settings.showEffect) {
             case "expand_down":
-              $("#mobile-menu-inner").slideUp("fast");
+              $("#mobile-menu-inner").slideUp();
             break;
 
             case "drawer_top":
@@ -527,7 +506,7 @@ window.matchMedia || (window.matchMedia = function() {
 
           switch (_this.settings.showEffect) {
             case "expand_down":
-              $("#mobile-menu-inner").slideDown("fast");
+              $("#mobile-menu-inner").slideDown();
             break;
 
             case "drawer_top":
@@ -806,7 +785,7 @@ window.matchMedia || (window.matchMedia = function() {
         $(_this.target).show();
       },
 
-      // Verify if a query is valid for current browser width.
+      /* Verify if a query is valid for current browser width. */
       checkQuery : function(query) {
         return window.matchMedia(query).matches;
       }, // End of checkQuery
@@ -946,7 +925,7 @@ window.matchMedia || (window.matchMedia = function() {
   };
   // end of mobile_menu class
 
-  // $.FN
+  /** $.FN **/
   $.fn.mobile_menu = function(opts) {
     var id = $(this).attr('id');
 

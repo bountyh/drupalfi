@@ -15,8 +15,6 @@ define('MOBILE_NAVIGATION_WIDTH', 65);
 define('MOBILE_NAVIGATION_SPECIAL_CLASSES', FALSE);
 define('MOBILE_NAVIGATION_PAGESELECTOR', '#page');
 define('MOBILE_NAVIGATION_USE_MASK', TRUE);
-define('MOBILE_NAVIGATION_MENU_LABEL', 'Menu');
-define('MOBILE_NAVIGATION_EXPAND_ACTIVE_TRAIL', FALSE);
 
 /**
  * Helper function for getting Mobile navigation effects.
@@ -58,7 +56,7 @@ function mobile_navigation_permission() {
 }
 
 /**
- * Implements hook_page_build().
+ * Implements hook_init().
  */
 function mobile_navigation_page_build() {
   global $theme_key;
@@ -67,6 +65,7 @@ function mobile_navigation_page_build() {
     drupal_add_js(drupal_get_path('module', 'mobile_navigation') . '/js/mobile_menu.js', array('preprocess' => FALSE));
     drupal_add_js(drupal_get_path('module', 'mobile_navigation') . '/mobile_navigation.js', array('preprocess' => FALSE));
     drupal_add_css(drupal_get_path('module', 'mobile_navigation') . '/mobile_navigation.css');
+
     $settings = array(
       'breakpoint' => variable_get('mobile_navigation_breakpoint', MOBILE_NAVIGATION_BREAKPOINT),
       'menuSelector' => variable_get('mobile_navigation_menuselector', MOBILE_NAVIGATION_MENUSELECTOR),
@@ -78,9 +77,8 @@ function mobile_navigation_page_build() {
       'specialClasses' => variable_get('mobile_navigation_special_classes', MOBILE_NAVIGATION_SPECIAL_CLASSES),
       'mainPageSelector' => variable_get('mobile_navigation_mainPageSelector', MOBILE_NAVIGATION_PAGESELECTOR),
       'useMask' => variable_get('mobile_navigation_useMask', MOBILE_NAVIGATION_USE_MASK),
-      'menuLabel' => t(variable_get('mobile_navigation_menu_label', MOBILE_NAVIGATION_MENU_LABEL)),
-      'expandActive' => variable_get('mobile_navigation_expand_active_trail', MOBILE_NAVIGATION_EXPAND_ACTIVE_TRAIL),
     );
+
     drupal_add_js(array('mobile_navigation' => $settings), 'setting');
   }
 }
